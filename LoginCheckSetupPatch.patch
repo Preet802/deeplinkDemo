@@ -1,0 +1,60 @@
+Subject: [PATCH] LoginCheckSetupPatch
+---
+Index: buildSrc
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/buildSrc b/buildSrc
+--- a/buildSrc	(revision 35bf2a428b68596a555a767f320bbbe015b693be)
++++ b/buildSrc	
+@@ -1,1 +1,1 @@
+-121846db823ea4fea76931093564159a90f41ed2
+\ No newline at end of file
++bb9ddcf3f4efb7dceced4338fc7a35f1b970dd63
+\ No newline at end of file
+Index: buildSrc/src/main/kotlin/Deps.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/buildSrc/src/main/kotlin/Deps.kt b/buildSrc/src/main/kotlin/Deps.kt
+--- a/buildSrc/src/main/kotlin/Deps.kt	(revision bb9ddcf3f4efb7dceced4338fc7a35f1b970dd63)
++++ b/buildSrc/src/main/kotlin/Deps.kt	(date 1731570876335)
+@@ -73,6 +73,7 @@
+     const val zxingAndroid = "4.3.0"
+     const val playFeatureDelivery = "2.1.0"
+     const val playReview = "2.0.1"
++    const val json = "20140107"
+ }
+ 
+ object UiDeps {
+@@ -191,6 +192,7 @@
+     const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
+     const val workManagerTest = "androidx.work:work-testing:${Versions.workManager}"
+     const val room = "androidx.room:room-testing:${Versions.room}"
++    const val json = "org.json:json:${Versions.json}"
+ }
+ 
+ object LoggingDeps {
+Index: app/src/main/java/com/walmart/sparkdriver/features/home/HomePresenter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/walmart/sparkdriver/features/home/HomePresenter.kt b/app/src/main/java/com/walmart/sparkdriver/features/home/HomePresenter.kt
+--- a/app/src/main/java/com/walmart/sparkdriver/features/home/HomePresenter.kt	(revision 35bf2a428b68596a555a767f320bbbe015b693be)
++++ b/app/src/main/java/com/walmart/sparkdriver/features/home/HomePresenter.kt	(date 1731573990708)
+@@ -384,9 +384,10 @@
+ 
+     fun navigateToHome() {
+         if (isHomeRedesignEnabled()) {
+-            view?.navigateToHomeWithHeatMap()
+-        } else {
+             driver?.let { view?.navigateToSparkHome(it) }
++
++        } else {
++            view?.navigateToHomeWithHeatMap()
+         }
+     }
+ 
